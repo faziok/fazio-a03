@@ -1,0 +1,6 @@
+
+L
+java:S1854"6Remove this useless assignment to local variable "pw".(ƒ¦¾±
+=
+java:S1481"'Remove this unused "pw" local variable.(ƒ¦¾±
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(™¾—ø
