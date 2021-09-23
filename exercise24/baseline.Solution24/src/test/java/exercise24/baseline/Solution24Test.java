@@ -9,7 +9,12 @@ class Solution24Test {
     @Test
     void isAnagram() {
         Solution24 anagram = new Solution24();
-        assertTrue(true, isAnagram("hello", "lloeh"));
-        assertTrue(true, isAnagram("hello", "lloej"));
+        assertTrue(anagram.isAnagram("hello", "hello"));
+        assertTrue(anagram.isAnagram("hello", "elloh"));
+        assertTrue(anagram.isAnagram("heLlo", "Elloh"));
+        assertTrue(anagram.isAnagram("hel   lo", "h ello"));
+        assertTrue(anagram.isAnagram("hello one", "hello one"));
+        assertFalse(anagram.isAnagram("hello", "helo"));
+        assertFalse(anagram.isAnagram("hello", "eljoh"));
     }
 }
