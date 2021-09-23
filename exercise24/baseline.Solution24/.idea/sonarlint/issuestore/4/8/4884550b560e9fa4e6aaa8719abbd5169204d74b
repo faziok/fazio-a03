@@ -1,0 +1,7 @@
+
+V
+java:S1854";Remove this useless assignment to local variable "anagram".(™÷Ûêþÿÿÿÿ
+G
+java:S1481",Remove this unused "anagram" local variable.(™÷Ûêþÿÿÿÿ
+Q	java:S1255"<This block of commented-out lines of code should be removed.(Þ²Ëê
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Çò Ø
