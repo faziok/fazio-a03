@@ -29,23 +29,29 @@ public class Solution25 {
         /*
         prompt user "Please enter your password: "
         String userPW = scanned input
+        */
 
-        pass userPW through passwordValidator
+        String userPW = pw.scanInput("Please enter your password: ");
 
-        pass value returned by passwordValidator through determineStrength
+        //pass userPW through passwordValidator
+        int pwValue = pw.passwordValidator(userPW);
 
-        print response "The password 'userPW' is 'strength' password."
-         */
+        //pass value returned by passwordValidator through determineStrength
+        String strength = pw.determineStrength(pwValue);
+
+        //print response "The password 'userPW' is 'strength' password.
+        System.out.printf("The password '%s' is %s password.", userPW, strength);
 
     }
 
     public String scanInput(String prompt){
         //scan and return input
+        System.out.print(prompt);
+        return input.nextLine();
     }
 
     public int passwordValidator(String password){
         /*
-        change password to a char array
         if password length < 8
             if password is only numbers
                 return 1
@@ -61,13 +67,33 @@ public class Solution25 {
             else
                 return 0
          */
+
+        if (password.length() < 8){
+            if (password.matches("[0-9]+")){
+                return 1;
+            }
+            else if (password.matches("[a-zA-Z]+") ){
+                return 2;
+            }
+            else {
+                return 0;
+            }
+        }
+        else{
+            if (password.matches(".*[a-zA-Z].*") && password.matches(".*[0-9].*" )) {
+                if (password.matches(".*[!@#$%&*()_+=|<>?{}\\[\\]~-].*")){
+                    return 4;
+                }else{
+                    return 3;
+                 }
+            } else {
+                return 0;
+            }
+        }
     }
 
-    public String determineStrength(int pwValue){
+    public String determineStrength(int pwValue) {
         /*
-        //Get strength output
-        String strength
-
         Switch pwValue
             case 1: strength = "a very weak"
             case 2: strength = "a weak"
@@ -77,5 +103,12 @@ public class Solution25 {
 
         return strength
          */
+        return switch (pwValue) {
+            case 1 -> "a very weak";
+            case 2 -> "a weak";
+            case 3 -> "a strong";
+            case 4 -> "a very strong";
+            default -> "an unknown strength";
+        };
     }
 }
