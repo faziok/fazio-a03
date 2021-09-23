@@ -17,11 +17,6 @@ public class Solution25 {
      * A strong password contains letters and at least one number and is at least eight characters.
      * A very strong password contains letters, numbers, and special characters and is at least eight characters.
      * If a password does not meet any of these rules, then report it as a password of unknown strength.
-
-     * Constraints
-     * -Create a passwordValidator function that takes in the password as its argument and returns a numeric value
-     *      you can evaluate to determine the password strength.
-     * -Use a single output statement.
      */
 
     public static void main(String[] args) {
@@ -53,17 +48,13 @@ public class Solution25 {
     public int passwordValidator(String password){
         /*
         if password length < 8
-            if password is only numbers
-                return 1
-            else if password is only letters
-                return 2
-            else
-                return 0
+            if password is only numbers -> return 1
+            else if password is only letter -> return 2
+            else -> return 0
          else
             if password contains letters and at least one number
-                return 3
-            else if password contains letters, numbers, and specials characters
-                return 4
+                if password contains letters, numbers, and specials characters -> return 4
+                else -> return 3
             else
                 return 0
          */
@@ -94,14 +85,13 @@ public class Solution25 {
 
     public String determineStrength(int pwValue) {
         /*
-        Switch pwValue
+        //assign string based on pwValue using a switch statement.
+        return Switch pwValue
             case 1: strength = "a very weak"
             case 2: strength = "a weak"
             case 3: strength = "a strong"
             case 4: strength = "a very strong"
             default: strength = "an unknown strength"
-
-        return strength
          */
         return switch (pwValue) {
             case 1 -> "a very weak";
