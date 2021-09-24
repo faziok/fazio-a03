@@ -5,7 +5,10 @@ package exercise26.baseline;
  *  Copyright 2021 Keven Fazio
  */
 
+import java.util.Scanner;
+
 public class Solution26 {
+    Scanner input = new Scanner(System.in);
 
     /*
      * Write a program that will help you determine how many months it will take to pay off a credit card balance.
@@ -37,24 +40,30 @@ public class Solution26 {
      */
 
     public static void main(String[] args) {
-        //prompt and scan userInput to "What is your balance"
-        double currentBalance = cardPayOff.scanInput("What is your balance? ");
+        Solution26 cardPayOff = new Solution26();
 
-        //prompt and scan userInput to "What is the APR on the card (as a percent)?"
-        double aprPercentage = cardPayOff.scanInput("What is the APR on the card (as a percent)? ");
+        //prompt and scan userInput to "What is your balance", parse to Double
+        double currentBalance = Double.parseDouble(cardPayOff.scanInput("What is your balance? "));
 
-        //prompt and scan userInput to "What is the monthly payment you can make?"
-        double monthlyPayment = cardPayOff.scanInput("What is the monthly payment you can make? ");
+        //prompt and scan userInput to "What is the APR on the card (as a percent)?", parse to Double
+        double aprPercentage = Double.parseDouble(cardPayOff.scanInput("What is the APR on the card (as a percent)? "));
+
+        //prompt and scan userInput to "What is the monthly payment you can make?", parse to Double
+        double monthlyPayment = Double.parseDouble(cardPayOff.scanInput("What is the monthly payment you can make? "));
 
         // Pass input through PaymentCalculator class
-        // PaymentCalculator calculator1 = new PaymentCalculator(currentBalance, aprPercentage, monthlyPayment)
+        PaymentCalculator calculator1 = new PaymentCalculator(currentBalance, aprPercentage, monthlyPayment);
 
-        //print "It will take you 'months' months to payoff this card."
+        //print "It will take you 'months' months to pay off this card."
+        System.out.printf("It will take you %d months to pay off this card.%n", calculator1.calculateMonthsUntilPaidOff());
 
     }
 
     public String scanInput (String prompt){
         //print prompt
         //scan in user input
+
+        System.out.print(prompt);
+        return input.nextLine();
     }
 }
