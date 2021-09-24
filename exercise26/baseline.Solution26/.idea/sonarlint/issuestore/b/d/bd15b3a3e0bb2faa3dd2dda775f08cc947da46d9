@@ -1,0 +1,14 @@
+
+d
+java:S1854/"BRemove this useless assignment to local variable "monthlyPayment".(¹Ğèüıÿÿÿÿ8Œ‰÷ÂÁ/
+^
+java:S1854,"ARemove this useless assignment to local variable "aprPercentage".(´¢ÂŞ8Œ‰÷ÂÁ/
+_
+java:S1854)"BRemove this useless assignment to local variable "currentBalance".(¢¦¶8Œ‰÷ÂÁ/
+P
+java:S1481)"3Remove this unused "currentBalance" local variable.(¢¦¶8Œ‰÷ÂÁ/
+O
+java:S1481,"2Remove this unused "aprPercentage" local variable.(´¢ÂŞ8Œ‰÷ÂÁ/
+U
+java:S1481/"3Remove this unused "monthlyPayment" local variable.(¹Ğèüıÿÿÿÿ8Œ‰÷ÂÁ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‚Ï·Şÿÿÿÿÿ
