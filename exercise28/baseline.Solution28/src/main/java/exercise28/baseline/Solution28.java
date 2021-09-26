@@ -13,14 +13,6 @@ public class Solution28 {
     /*
      * Write a program that prompts the user for five numbers and computes the total of the numbers.
      *
-     * Example Output
-     * Enter a number: 1
-     * Enter a number: 2
-     * Enter a number: 3
-     * Enter a number: 4
-     * Enter a number: 5
-     * The total is 15.
-     *
      * Constraints
      * -The prompting must use repetition, such as a counted loop, not three separate prompts.
      */
@@ -32,7 +24,7 @@ public class Solution28 {
         String[] numbers = add.scanInputs("Enter a number: ");
 
         //add numbers together and print
-        System.out.printf("The total is %d.%n", add.getTotal(numbers));
+        System.out.printf("The total is %.2f.%n", add.getTotal(numbers));
 
     }
 
@@ -41,11 +33,21 @@ public class Solution28 {
         String[] numbers = new String[5];
 
         //for i <= 4 prompt user to enter number and scan into a numbers String array
+        for(int i = 0; i <= 4; i++){
+            System.out.print(prompt);
+            numbers[i] = input.nextLine();
+        }
+        return numbers;
     }
 
-    public int getTotal(String[] numbers){
-        int total = 0;
+    public double getTotal(String[] numbers){
+        double total = 0;
+
         //parse strings to integers and add numbers together using a for loop.
+        for(int i = 0; i <= 4; i++){
+            total += Double.parseDouble(numbers[i]);
+        }
+        return total;
     }
 }
 
