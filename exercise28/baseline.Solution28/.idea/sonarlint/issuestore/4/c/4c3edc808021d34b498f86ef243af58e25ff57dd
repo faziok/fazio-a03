@@ -1,0 +1,13 @@
+
+N	java:S106#"9Replace this use of System.out or System.err by a logger.(¸¡ôÿ
+]
+java:S1854)";Remove this useless assignment to local variable "numbers".(È´³¡ıÿÿÿÿ8ö«úƒÂ/
+O
+java:S1172'"-Remove this unused method parameter "prompt".(¡Ó‚Èşÿÿÿÿ8ö«úƒÂ/
+N
+java:S1481)",Remove this unused "numbers" local variable.(È´³¡ıÿÿÿÿ8ö«úƒÂ/
+P
+java:S1172.".Remove this unused method parameter "numbers".(ÊâÅÏıÿÿÿÿ8ˆ„üƒÂ/
+L
+java:S1481/"*Remove this unused "total" local variable.(óË üÿÿÿÿ8ˆ„üƒÂ/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ç©æ°
