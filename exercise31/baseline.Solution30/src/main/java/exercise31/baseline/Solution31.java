@@ -32,23 +32,41 @@ public class Solution31 {
 
         //prompt user for resting heart rate and scan in String and verify input is numeric.
         //prompt user for age and scan in String and verify input is numeric.
-        int restingHR;
-        int age;
+        int restingHR = Integer.parseInt(hr.scanInput("What is your resting pulse? "));
+        int age = Integer.parseInt(hr.scanInput("What is your age? "));
 
         //pass input through TargetHeartRate class.
-        TargetHeartRate rateBPM = new TargetHeartRate(age, restingHR);
+        TargetHeartRate rate = new TargetHeartRate(restingHR, age);
 
         //get and print targetHeartRate.
-        rateBPM.printTable();
+        rate.printTable();
     }
 
-    public String isInputNumeric(String prompt){
-        //prompt user
-        //scan if userInput is numeric
-        //scan in userInput as string
-        //while numeric is false
-        //      prompt user for valid input and rescan
-        //return userInput
+    public String scanInput (String prompt){
+        //prompt user and scan input
+        System.out.print(prompt);
+        String userInput = input.nextLine();
+
+        //while checkNumeric is false prompt user and rescan input.
+        while (!checkNumeric(userInput)){
+            System.out.print("Please answer with whole numbers only.\n" + prompt);
+            userInput = input.nextLine();
+        }
+
+        //return user input
+        return userInput;
     }
 
+    public boolean checkNumeric(String inputString) {
+        boolean check = true;
+
+        //try input is a numeric, catch if not, set to false
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            check = false;
+        }
+        //return check result
+        return check;
+    }
 }
