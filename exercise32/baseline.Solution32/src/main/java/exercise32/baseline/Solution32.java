@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class Solution32 {
     Scanner input = new Scanner(System.in);
-    int guessCount;
-    int max;
+    int guessCount; //total guess count for game
+    int max; //max range based off difficulty
 
     /*
      * GUESS THE NUMBER GAME:
@@ -38,7 +38,7 @@ public class Solution32 {
 
         //play the game
         do {
-            game.guessCount = 1;
+            game.guessCount = 1; //set guest count for start of game
             //Print Intro "Let's play Guess The Number!"
             System.out.println("Let's play Guess The Number!");
 
@@ -58,8 +58,10 @@ public class Solution32 {
             //When number is guess correctly print "You got it in 'numGuesses' guesses!"
             System.out.printf("You got it in %d guesses!%n", guessCount);
 
+            //prompt user if they want to play again
+            String answer = game.scanInput("Do you wish to play again (Y/N)? ");
             //check if they want to play again
-            playAgain = game.checkPlayAgain();
+            playAgain = game.checkPlayAgain(answer);
 
         }while (playAgain); //if true replay game.
 
@@ -68,58 +70,119 @@ public class Solution32 {
         System.exit(0);
     }
 
-    public boolean checkPlayAgain (){
-        //prompt user if they want to play again
+    public boolean checkPlayAgain (String answer){
         //while answer is not y, n, yes, or no
-            //prompt user "Please answer 'Y' or 'N'"
-            //scan input
+        //prompt user "Please answer 'Y' or 'N'"
+        //scan input
+        while(!answer.equalsIgnoreCase("yes") && !answer.equalsIgnoreCase("y")
+                && !answer.equalsIgnoreCase("no") && !answer.equalsIgnoreCase("n")){
+            answer = scanInput("Please answer 'Y' or 'N': ");
+        }
+
         //if answer does not equal to 'no' or 'n' return true else return false
+        System.out.println("");
+        return !answer.equalsIgnoreCase("no") && !answer.equalsIgnoreCase("n");
     }
 
 
     public int getRandomNumber(int difficulty){
         //using secureRandom
+        SecureRandom random = new SecureRandom();
+
         //if difficulty == 1
-            //min == 1 and max == 10
+        //min == 1 and max == 10
+        if (difficulty == 1){
+            max = 10;
+            return 1 + random.nextInt(10);
+        }
         //else if difficulty == 2
-            //min == 1 and max == 100
+        //min == 1 and max == 100
+        else if (difficulty == 2){
+            max = 100;
+            return 1 + random.nextInt(100);
+        }
         //else
-            //min == 1 and max == 1000
+        //min == 1 and max == 1000
+        else{
+            max = 1000;
+            return 1 + random.nextInt(1000);
+        }
     }
 
     public int checkGuessCount (int randomNumber, int guess){
         //while input != random number
+        while(guess != randomNumber){
             //if guess > max range OR < 1
-                //increase guessCount + 1
-                //prompt user "Out of range. Guess again:"
-            //if guess < randomNumber
-                //increase guessCount  + 1
-                //prompt user "To low! Guess again:"
+            //increase guessCount + 1
+            //prompt user "Out of range. Guess again:"
+            if (guess > max || guess < 1){
+                guessCount++;
+                guess = Integer.parseInt(checkGuessNumeric(scanInput("Out of range. Guess again: ")));
+            }
+            //else if guess < randomNumber
+            //increase guessCount  + 1
+            //prompt user "To low! Guess again:"
+            else if (guess < randomNumber) {
+                guessCount++;
+                guess = Integer.parseInt(checkGuessNumeric(scanInput("To low! Guess again: ")));
+            }
             //else
-                //increase guess count + 1
-                //prompt user "To high! Guess again:"
-                //prompt user "To high! Guess again:"
-
+            //increase guess count + 1
+            //prompt user "To high! Guess again:"
+            else {
+                guessCount++;
+                guess = Integer.parseInt(checkGuessNumeric(scanInput("To high! Guess again: ")));
+            }
+        }
         //return guessCount
+        return guessCount;
     }
 
     public String checkGuessNumeric(String inputString) {
         //try input is a numeric, catch if not, set to false.
-        //while false prompt user for integers only and rescan.
-        //increase guestCount for each guess
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            boolean numeric = false;
+            //while false prompt user for integers only and rescan.
+            //increase guestCount for each guess
+            while (!numeric){
+                guessCount++;
+                System.out.print("Please answer with integers only: ");
+                numeric = input.hasNextInt();
+                inputString = input.nextLine();
+            }
+        }
         //return inputString
+        return inputString;
     }
 
     public String check123 (String inputString){
         //while inputString is not 1, 2, or 3.
-            //Prompt user "Please answer with 1, 2, or 3:" and rescan input (check if numeric)
+        //Prompt user "Please answer with 1, 2, or 3:" and rescan input (check if numeric)
+        while (!inputString.equals("1") && !inputString.equals("2") && !inputString.equals("3")) {
+            System.out.print("Please answer with 1, 2, or 3: ");
+            inputString = checkNumeric(input.nextLine());
+        }
         //return inputString
+        return inputString;
     }
 
     public String checkNumeric(String inputString) {
         //try input is a numeric, catch if not, set to false.
         //while false prompt user for integers only and rescan.
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            boolean numeric = false;
+            while (!numeric){
+                System.out.print("Please answer with integers only: ");
+                numeric = input.hasNextInt();
+                inputString = input.nextLine();
+            }
+        }
         //return inputString
+        return inputString;
     }
 
     public String scanInput(String prompt){
