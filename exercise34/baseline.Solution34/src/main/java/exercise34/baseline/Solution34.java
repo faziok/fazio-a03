@@ -78,13 +78,18 @@ public class Solution34 {
 
     public void getListLength(){
         //print length of list
+        System.out.printf("There are %d employee:%n", names.size());
     }
 
     public void printNamesList(){
         //for the length of list, from element on new line
+        for (String name : names) {
+            System.out.print(name + "\n");
+        }
     }
 
     public void subtractName(String nameToRemove){
         //subtract name from list
+        names.remove(nameToRemove);
     }
 }
