@@ -5,10 +5,8 @@ package exercise33.baseline;
  *  Copyright 2021 Keven Fazio
  */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.security.SecureRandom;
+import java.util.*;
 
 public class Solution33 {
     Scanner input = new Scanner(System.in);
@@ -32,13 +30,13 @@ public class Solution33 {
         Solution33 app = new Solution33();
 
         //prompt user "What's your question?"
-        String question = app.scanInput("What's your question? ");
+        String question = app.scanInput("What's your question?\n> ");
 
         //get pseudo random number
         int randomNumber = app.getRandomNumber();
 
         //print getResponse
-        System.out.print(app.getResponse());
+        System.out.println("\n" + app.getResponse(randomNumber));
 
     }
 
@@ -50,15 +48,21 @@ public class Solution33 {
 
     public int getRandomNumber (){
         //get random number with .nextInt(4) and return
-        Random num = new Random();
+        Random num = new SecureRandom();
         return num.nextInt(4);
     }
 
-    /*
-    public String getResponse (){
-        //
-        ArrayList<String> positiveResponses = new ArrayList<String> (Arrays.asList("Yes",
-                "No", "Maybe", "Ask again Later"));
+    public String getResponse (int randomNum){
+        //create list
+        List<String> response = new ArrayList<>();
+
+        //add responses to the list
+        response.add("Yes.");
+        response.add("No.");
+        response.add("Maybe.");
+        response.add("Ask again later.");
+
+        //return response based off random number selected
+        return response.get(randomNum);
     }
-     */
 }

@@ -1,15 +1,8 @@
 
-b
-java:S1854&"@Remove this useless assignment to local variable "randomNumber".(·³üÁùÿÿÿÿ8üíÌÆÃ/
 W
-java:S1854#"<Remove this useless assignment to local variable "question".(†¹®şÿÿÿÿ
+java:S1854!"<Remove this useless assignment to local variable "question".(©û»˜üÿÿÿÿ
 H
-java:S1481#"-Remove this unused "question" local variable.(†¹®şÿÿÿÿ
-S
-java:S1481&"1Remove this unused "randomNumber" local variable.(·³üÁùÿÿÿÿ8ÿíÌÆÃ/
-N	java:S106)"9Replace this use of System.out or System.err by a logger.(ÈùÎÇ
-Z	java:S106/"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ8î‡ÍÆÃ/
-4
-java:S21195"Save and re-use this "Random".(®ÌÕÖ
-P	java:S125:"<This block of commented-out lines of code should be removed.(í•ã
+java:S1481!"-Remove this unused "question" local variable.(©û»˜üÿÿÿÿ
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(ğÎÂİ
+S	java:S106-"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡Ï—
