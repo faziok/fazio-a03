@@ -5,6 +5,7 @@ package exercise37.baseline;
  *  Copyright 2021 Keven Fazio
  */
 
+import java.security.SecureRandom;
 import java.util.*;
 
 public class Solution37 {
@@ -54,16 +55,16 @@ public class Solution37 {
         int letterNum = app.checkMinLength(lengthMin, spCharNum, numbersNum);
 
         //add random elements for special characters to pw list
-
+        app.getRandomElements(chars, pw1, spCharNum);
 
         //add random elements for special numbers to pw list
-
+        app.getRandomElements(nums, pw1, numbersNum);
 
         //add random elements for special characters to pw list
-
+        app.getRandomElements(letters, pw1, letterNum);
 
         //print password
-
+        System.out.printf("Your password is: %s%n", app.getAndShufflePassword(pw1));
 
     }
 
@@ -73,6 +74,20 @@ public class Solution37 {
         String numbers = "0123456789";
         String spChars = "!@#$%^&*()?";
 
+        //add characters to letters list
+        for (char ch: alphabet.toCharArray()) {
+            letters.add(ch);
+        }
+
+        //add characters to letters list
+        for (char ch: numbers.toCharArray()) {
+            nums.add(ch);
+        }
+
+        //add characters to letters list
+        for (char ch: spChars.toCharArray()) {
+            chars.add(ch);
+        }
     }
 
     private String scanInput(String prompt) {
@@ -95,40 +110,55 @@ public class Solution37 {
             }
         }
         //return inputString
-
+        return inputString;
     }
 
     public int checkMinLength (int min, int chars, int nums){
-
+        SecureRandom rand = new SecureRandom();
 
         //get length of chars plus nums
-
+        int length = chars + nums;
+        int lettersNum;
 
         //if length of chars and nums is less than the min.
-        //Subtract length from min value. choose a random number between 0-2 for variation.
+        //Subtract length from min value.
         //this will be the amount of letters to select
-
-
+        if (length < min){
+            lettersNum = (min - length);
+        }else{
+            //else  letters = length
+            //this will be the amount of letters to select
+            lettersNum = length;
+        }
         //return amount of letters to print
-
+        return lettersNum;
     }
 
     public void getRandomElements(List<Character> listIn, List<Character> listOut, int num) {
-
+        SecureRandom rand = new SecureRandom();
 
         //using a random number to select elements from list
         //for the length of the list, choose the number of elements chosen.
         //add the element to the new list
         //remove the element from the original list to prevent duplicate selections
-
+        for (int i = 0; i < num; i++) {
+            int randomIndex = rand.nextInt(listIn.size());
+            listOut.add(listIn.get(randomIndex));
+            listIn.remove(randomIndex);
+        }
     }
 
     public String getAndShufflePassword (List<Character> pwList){
-
+        SecureRandom rand = new SecureRandom();
+        StringBuilder output = new StringBuilder(pwList.size());
 
         //take pw list of chosen elements and shuffle them
         //using a random number to get random password
-
+        while(!pwList.isEmpty()){
+            int randPicker = rand.nextInt(pwList.size());
+            output.append(pwList.remove(randPicker));
+        }
         //return final password as string.
+        return output.toString();
     }
 }
