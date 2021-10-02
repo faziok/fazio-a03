@@ -8,7 +8,7 @@ package exercise36.baseline;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.stream.Collectors;
 
 public class Solution36 {
 
@@ -62,7 +62,9 @@ public class Solution36 {
         app.printNumberList(listNumbers);
 
         //convert String list to Integer list.
-
+        listIntegers = listNumbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
 
         //print average, min, max, standard deviation
         app.printResults(listIntegers);
@@ -72,26 +74,46 @@ public class Solution36 {
         //while the input does not equal "done"
         //print the prompt and scan to string
         //if input is numeric, add to list (if not it is ignored)
+        String name;
+        do{
+            System.out.print(prompt);
+            name = input.nextLine();
+            if(checkNumeric(name)){
+                entry.add(name);
+            }
+        }while(!name.equalsIgnoreCase("done"));
     }
 
     public boolean checkNumeric(String inputString) {
         //try input is a numeric, catch if not, set to false.
         //return numeric
+        boolean numeric = true;
 
+        try {
+            Integer.parseInt(inputString);
+        } catch (NumberFormatException e) {
+            numeric = false;
+        }
+
+        return numeric;
     }
 
     public void printNumberList(List<String> entry){
         //print "Numbers: "
         //comma separate the list to a string
         //print the comma separated string
-
+        System.out.print("Numbers: ");
+        String commaSeparated = String.join(", ", entry);
+        System.out.print(commaSeparated + "\n");
     }
 
     public double average(List<Integer> list){
+        //for the length of the list, add numbers together and divide by length
         double sum = 0;
         for (Integer num : list) {
             sum += num;
         }
+        //return average rounded to one decimal place
         return Math.round((sum/list.size()) * 10) / 10.0;
     }
 
@@ -101,9 +123,15 @@ public class Solution36 {
 
         // loop through every element in the list and
         // compare the minimum with the current value
-
+        for (Integer i: list)
+        {
+            // update min if found to be more than the current element
+            if (min > i) {
+                min = i;
+            }
+        }
         //return min
-
+        return min;
     }
 
     public int max(List<Integer> list){
@@ -112,24 +140,33 @@ public class Solution36 {
 
         // loop through every element in the list and
         // compare the minimum with the current value
-
+        for (Integer i: list)
+        {
+            // update min if found to be more than the current element
+            if (max < i) {
+                max = i;
+            }
+        }
         //return max
-
+        return max;
     }
 
     public double std(List<Integer> list){
-        //std equation sqruare root [(((list(i) - average)^2) / (n-10))]
         // initialize variance variables and n for list length
         double variance1 =0;
         double variance2;
         int n = list.size();
 
         //loop through all elements into the equation for the numerator
+        for (int i = 0; i < n; i++) {
+            variance1 += Math.pow((list.get(i) - average(list)), 2);
+        }
 
         //divide numerator by (n-1)
+        variance2 = variance1/(n-1);
 
         //square root the variance and return deviation
-
+        return Math.round((Math.sqrt(variance2))* 10) / 10.0;
     }
 
     public void printResults(List<Integer> list){
@@ -138,3 +175,4 @@ public class Solution36 {
                 "The standard deviation is: %.1f%n", average(list), min(list), max(list), std(list));
     }
 }
+
