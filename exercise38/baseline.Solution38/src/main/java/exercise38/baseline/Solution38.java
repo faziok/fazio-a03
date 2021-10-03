@@ -5,6 +5,7 @@ package exercise38.baseline;
  *  Copyright 2021 Keven Fazio
  */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Solution38 {
@@ -52,18 +53,38 @@ public class Solution38 {
         //try input is a numeric, catch if not, set to false.
         //while false prompt user for integers only and rescan.
 
+        boolean numeric;
+
+        do {
+            numeric = true;
+            try {
+                Long.parseLong(inputString.replaceAll("\\s", ""));
+            } catch (NumberFormatException e) {
+                numeric = false;
+                System.out.print("Please answer with Integers only: ");
+                inputString = input.nextLine();
+            }
+        }while(!numeric);
+
         //return inputString
+        return inputString;
     }
 
     public int[] convertStrToIntArray (String numStr){
         //delimit string into a string array
+        String[] strArr = numStr.split(" ");
 
         //initialize int array with length of strArr length
+        int[] intArr = new int[strArr.length];
 
         //convert string array to int array
         //for length of string array, parse to int array
+        for (int i = 0; i < strArr.length; i++){
+            intArr[i] = Integer.parseInt(strArr[i]);
+        }
 
         //return int array
+        return intArr;
     }
 
 
@@ -71,19 +92,41 @@ public class Solution38 {
         //find size of array for even number
         //for length of array check for even numbers
         //if even increase evenSize by 1
-
+        int evenSize = 0;
+        for (int value : numArr) {
+            if (value % 2 == 0) {
+                evenSize++;
+            }
+        }
         //initialize new string array output
         //for loop scanning length of array for even numbers
         //if input[i]%2 == 0
         //output[i] = numArr[i]
 
+        int[] evenNumbers = new int[evenSize];
+        int k = 0;
+
+        for (int i : numArr) {
+            if (i % 2 == 0) {
+                evenNumbers[k++] = i;
+            }
+        }
+
         //return string conversion of array
+        return evenNumbers;
     }
 
     public void printEvenNumbers (String numStr){
         //get length for print loop
-;
-        //for length of evenNumbers array print the numbers.
+        int evenNumbers = filterEvenNumbers(convertStrToIntArray(numStr)).length;
 
+        //sort the array
+        int[] sorted = filterEvenNumbers(convertStrToIntArray(numStr));
+        Arrays.sort(sorted);
+
+        //for length of evenNumbers array print the numbers.
+        for (int i = 0; i < evenNumbers; i++) {
+            System.out.print(sorted[i] + " ");
+        }
     }
 }
