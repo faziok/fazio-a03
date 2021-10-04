@@ -33,10 +33,10 @@ public class Solution40 {
         String searchTerm = app.scanInput("Enter a search string: ");
 
         //create list of maps and sort by last name
-
+        List<Map<String, String>> employeeList = new ArrayList<>(app.sortList(app.createEmployeeList()));
 
         //print table of employees
-
+        app.printTable(app.searchList(employeeList, searchTerm));
     }
 
     private String scanInput(String prompt) {
@@ -102,30 +102,59 @@ public class Solution40 {
     }
 
     //Create comparator for maps
-
+    public List<Map<String, String>> sortList(List<Map<String, String>> list){
+        list.sort(Comparator.comparing(m -> (m.get(lName))));
+        return list;
+    }
 
     //Filter list by user input string
     public List<Map<String, String>> searchList(List<Map<String, String>> employeeList, String searchTerm){
 
         //create new lists. NewList so not to alter the original list and a filtered list to add matching maps too
+        List<Map<String, String>> newEmployeeList = new ArrayList<>(employeeList);
+        List<Map<String, String>> filteredList = new ArrayList<>();
 
         //for each index of the list
-            //for each value of the map
-                //if value contains the searchTerm
-                    //add current map to filtered list
-                    //break out of current for-loop to prevent repeat maps
+        //for each value of the map
+        //if value contains the searchTerm (convert both strings to lowercase to ignore upper/lower case)
+        //add current map to filtered list
+        //break out of current for-loop to prevent repeat maps
+        for (Map<String, String> map : newEmployeeList) {
+            for (String value : map.values()){
+                if (value.toLowerCase().contains(searchTerm.toLowerCase())){
+                    filteredList.add(map);
+                    break;
+                }
+            }
+        }
 
         //return filtered list
+        return filteredList;
     }
 
 
     public void printTable(List<Map<String, String>> filteredList){
 
         //if filtered is not empty, print table
+        if (!filteredList.isEmpty()){
+            System.out.print("\nResults:\n\n");
+
+            //print table header
+            System.out.printf("Name                |Position           |Separation Dates%n" +
+                    "--------------------|-------------------|----------------%n");
 
             //for each map in the list, print the map values
-
-        //else print no matching results.
-
+            for (Map<String, String> map : filteredList) {
+                String first = map.get(fName);
+                String last = map.get(lName);
+                String name = first + " " + last;
+                String pos = map.get(position);
+                String sepDate = map.get(separationDate);
+                System.out.format("%-20s| %-18s| %-16s%n", name, pos, sepDate);
+            }
+            //else print no matching results.
+        } else{
+            System.out.println("\nResults: No matches!");
+        }
     }
 }
