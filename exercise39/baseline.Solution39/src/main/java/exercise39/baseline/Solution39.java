@@ -28,10 +28,10 @@ public class Solution39 {
         Solution39 app = new Solution39();
 
         //create list of maps and sort by last name
-
+        List<Map<String, String>> employeeList = new ArrayList<>(app.sortList(app.createEmployeeList()));
 
         //print table of employees
-
+        app.printTable(employeeList);
     }
 
     public List<Map<String, String>> createEmployeeList(){
@@ -78,14 +78,23 @@ public class Solution39 {
         employee6.put(separationDate, "2015-12-18");
 
         //create a list that holds all the maps
-
+        List<Map<String, String>> employeeList = new ArrayList<>();
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        employeeList.add(employee3);
+        employeeList.add(employee4);
+        employeeList.add(employee5);
+        employeeList.add(employee6);
 
         //return employee list
         return employeeList;
     }
 
     //Create comparator for maps
-
+    public List<Map<String, String>> sortList(List<Map<String, String>> list){
+        list.sort(Comparator.comparing(m -> (m.get(lName))));
+        return list;
+    }
 
     public void printTable(List<Map<String, String>> employeeList){
         //print table header
@@ -93,6 +102,12 @@ public class Solution39 {
                 "--------------------|-------------------|----------------%n");
 
         //for each map in the list, print the map values
-
+        for (Map<String, String> map : employeeList) {
+            String first = map.get(fName);
+            String last = map.get(lName);
+            String pos = map.get(position);
+            String sepDate = map.get(separationDate);
+            System.out.format("%s %s %s %s%n", first, last, pos, sepDate);
+        }
     }
 }
