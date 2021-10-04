@@ -105,9 +105,10 @@ public class Solution39 {
         for (Map<String, String> map : employeeList) {
             String first = map.get(fName);
             String last = map.get(lName);
+            String name = first + " " + last;
             String pos = map.get(position);
             String sepDate = map.get(separationDate);
-            System.out.format("%s %s %s %s%n", first, last, pos, sepDate);
+            System.out.format("%-20s| %-18s| %-16s%n", name, pos, sepDate);
         }
     }
 }
