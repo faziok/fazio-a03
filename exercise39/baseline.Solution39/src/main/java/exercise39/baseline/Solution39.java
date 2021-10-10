@@ -111,4 +111,5 @@ public class Solution39 {
             System.out.format("%-20s| %-18s| %-16s%n", name, pos, sepDate);
         }
     }
+
 }

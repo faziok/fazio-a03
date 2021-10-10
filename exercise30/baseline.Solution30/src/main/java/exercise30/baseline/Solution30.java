@@ -5,8 +5,6 @@ package exercise30.baseline;
  *  Copyright 2021 Keven Fazio
  */
 
-import java.util.Arrays;
-
 public class Solution30 {
 
     /*
@@ -46,13 +44,11 @@ public class Solution30 {
         //print array in nested for loops
 
         //for row = 0, row < length, row++
-        for (int row=0; row < table.length; row++)
-        {
+        for (int[] ints : table) {
             //for column = 0, column < row.length, column++
-            for (int column=0; column < table[row].length; column++)
-            {
+            for (int anInt : ints) {
                 //print table
-                System.out.printf("%4d", table[row][column]);
+                System.out.printf("%4d", anInt);
             }
             //print new line
             System.out.println();
