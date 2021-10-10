@@ -114,8 +114,6 @@ public class Solution37 {
     }
 
     public int checkMinLength (int min, int chars, int nums){
-        SecureRandom rand = new SecureRandom();
-
         //get length of chars plus nums
         int length = chars + nums;
         int lettersNum;
@@ -142,9 +140,9 @@ public class Solution37 {
         //add the element to the new list
         //remove the element from the original list to prevent duplicate selections
         for (int i = 0; i < num; i++) {
-            int randomIndex = rand.nextInt(listIn.size());
-            listOut.add(listIn.get(randomIndex));
-            listIn.remove(randomIndex);
+                int randomIndex = rand.nextInt(listIn.size());
+                listOut.add(listIn.get(randomIndex));
+                listIn.remove(randomIndex);
         }
     }
 

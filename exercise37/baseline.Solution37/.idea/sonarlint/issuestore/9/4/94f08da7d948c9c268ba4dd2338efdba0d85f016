@@ -1,11 +1,7 @@
 
-Z	java:S106C"9Replace this use of System.out or System.err by a logger.(›°û úÿÿÿÿ8Ô€ÃøÃ/
-Z	java:S106_"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ8Õ€ÃøÃ/
-U	java:S106k"9Replace this use of System.out or System.err by a logger.(‹µğ8Ö€ÃøÃ/
-Z
-java:S1854u"8Remove this useless assignment to local variable "rand".(ùòÂ­ıÿÿÿÿ8ıúĞ—Ä/
-K
-java:S1481u")Remove this unused "rand" local variable.(ùòÂ­ıÿÿÿÿ8ıúĞ—Ä/
+S	java:S106C"9Replace this use of System.out or System.err by a logger.(›°û úÿÿÿÿ
+S	java:S106_"9Replace this use of System.out or System.err by a logger.(Æİêùÿÿÿÿ
+N	java:S106k"9Replace this use of System.out or System.err by a logger.(‹µğ
 F
-java:S5413“")Verify that "remove()" is used correctly.(Ò‡ O8×€ÃøÃ/
+java:S5413‘")Verify that "remove()" is used correctly.(Ò‡ O8ùãØáÆ/
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ì©Ñö
