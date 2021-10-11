@@ -139,10 +139,10 @@ public class Solution37 {
         //for the length of the list, choose the number of elements chosen.
         //add the element to the new list
         //remove the element from the original list to prevent duplicate selections
-        for (int i = 0; i < num; i++) {
-                int randomIndex = rand.nextInt(listIn.size());
-                listOut.add(listIn.get(randomIndex));
-                listIn.remove(randomIndex);
+        for (int i = num -1; i >= 0; i--) {
+            int randomIndex = rand.nextInt(listIn.size());
+            listOut.add(listIn.get(randomIndex));
+            listIn.remove(randomIndex);
         }
     }
 
